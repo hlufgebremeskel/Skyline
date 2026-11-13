@@ -18,6 +18,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [unit, setUnit] = useState('C');
   const [activeSection, setActiveSection] = useState('overview');
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   const handleSelectCity = (city) => {
     setSelectedCity({
@@ -51,6 +52,8 @@ function App() {
         onSelectCity={handleSelectCity}
         unit={unit}
         onUnitChange={setUnit}
+        isOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
       />
 
       <div className="dashboard-main">
@@ -61,6 +64,7 @@ function App() {
           onSearchSubmit={handleSearchSubmit}
           unit={unit}
           onUnitChange={setUnit}
+          onOpenMobileMenu={() => setIsMobileSidebarOpen(true)}
         />
 
         <main className="dashboard-content">

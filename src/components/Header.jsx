@@ -1,3 +1,4 @@
+import { Menu } from 'lucide-react';
 import SearchBar from './SearchBar.jsx';
 
 function Header({
@@ -7,14 +8,26 @@ function Header({
   onSearchSubmit,
   unit,
   onUnitChange,
+  onOpenMobileMenu,
 }) {
   return (
     <header className="dashboard-header">
-      <div className="header-location">
-        <h1>
-          {city.name}, <span className="header-country">{city.country}</span>
-        </h1>
-        <p className="header-date">{city.localDate}</p>
+      <div className="header-left">
+        <button
+          type="button"
+          className="mobile-menu-btn"
+          onClick={onOpenMobileMenu}
+          aria-label="Open navigation sidebar"
+        >
+          <Menu size={22} aria-hidden="true" />
+        </button>
+
+        <div className="header-location">
+          <h1>
+            {city.name}, <span className="header-country">{city.country}</span>
+          </h1>
+          <p className="header-date">{city.localDate}</p>
+        </div>
       </div>
 
       <div className="header-actions">
@@ -48,4 +61,3 @@ function Header({
 }
 
 export default Header;
-
